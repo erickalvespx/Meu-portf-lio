@@ -606,14 +606,6 @@ body:not(.light-theme) #theme-icon-light {
         font-size: 1.3rem; /* Reduz o tamanho da fonte */
     }
 
-    div { /* Estilos para a div do cabeçalho em telas muito pequenas */
-        display: flex; /* Habilita flexbox */
-        align-items: center; /* Alinha itens ao centro */
-        justify-content: center; /* Centraliza itens */
-        flex-direction: column; /* Organiza em coluna */
-        gap: 0.5rem; /* Espaçamento entre os itens */
-    }
-
     .footer-container {
         flex-direction: column; /* Organiza os itens em coluna */
         gap: 1rem; /* Adiciona um espaço entre os blocos */
@@ -622,9 +614,10 @@ body:not(.light-theme) #theme-icon-light {
     .footer-controls {
         order: -1; /* Move os controles (tema/idioma) para cima */
     }
-
-    button { /* Estilos para o botão em telas muito pequenas */
-        margin-top: 1rem; /* Adiciona margem no topo */
+    
+    /* Alinha o botão do formulário ao centro em telas pequenas */
+    #contact-form button {
+        align-self: center;
     }
 }
 
