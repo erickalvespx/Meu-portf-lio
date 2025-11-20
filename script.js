@@ -14,10 +14,16 @@ const translations = {
         'project1_title': 'projeto-Sistema-de-tarefas',
         'project1_desc': 'Um sistema de chamados para atribuição de tarefas a usuários, com autenticação via JWT. Desenvolvido com Node.js, Express e Prisma.',
         'project1_link': 'Ver no GitHub',
-        'project2_title': 'website-react-portfolio',
-        'project2_link': 'Ver projeto',
-        'project2_desc': 'Meu portfólio pessoal desenvolvido com React, utilizando componentes estilizados e animações para uma experiência de usuário fluida.',
-        'footer_location': 'Brasil',
+        'project3_title': 'Meu-portf-lio',
+        'project3_desc': 'O código-fonte deste portfólio. Construído com HTML, CSS e JavaScript para criar uma experiência de usuário limpa e responsiva.',
+        'project3_link': 'Ver no GitHub',
+        'contact_title': 'Contato',
+        'contact_name': 'Nome',
+        'contact_email': 'Email',
+        'contact_message': 'Mensagem',
+        'contact_submit': 'Enviar Mensagem',
+        'contact_success': 'Obrigado pelo contato! Sua mensagem foi enviada com sucesso.',
+        'footer_location': 'Brasil', // Mantido no final
         'github_link': 'GitHub'
     },
     'en': {
@@ -34,10 +40,16 @@ const translations = {
         'project1_title': 'project-Task-System',
         'project1_desc': 'A ticketing system for assigning tasks to users, with JWT authentication. Developed with Node.js, Express, and Prisma.',
         'project1_link': 'View on GitHub',
-        'project2_title': 'website-react-portfolio',
-        'project2_link': 'View project',
-        'project2_desc': 'My personal portfolio developed with React, using styled-components and animations for a smooth user experience.',
-        'footer_location': 'Brazil',
+        'project3_title': 'My-Portfolio',
+        'project3_desc': 'The source code for this portfolio website. Built with HTML, CSS, and JavaScript to create a clean and responsive user experience.',
+        'project3_link': 'View on GitHub',
+        'contact_title': 'Contact',
+        'contact_name': 'Name',
+        'contact_email': 'Email',
+        'contact_message': 'Message',
+        'contact_submit': 'Send Message',
+        'contact_success': 'Thank you for your message! It has been sent successfully.',
+        'footer_location': 'Brazil', // Mantido no final
         'github_link': 'GitHub'
     }
     ,
@@ -55,10 +67,16 @@ const translations = {
         'project1_title': 'proyecto-Sistema-de-tareas',
         'project1_desc': 'Un sistema de tickets para asignar tareas a usuarios, con autenticación vía JWT. Desarrollado con Node.js, Express y Prisma.',
         'project1_link': 'Ver en GitHub',
-        'project2_title': 'sitio-web-react-portfolio',
-        'project2_link': 'Ver proyecto',
-        'project2_desc': 'Mi portafolio personal desarrollado con React, utilizando componentes estilizados y animaciones para una experiencia de usuario fluida.',
-        'footer_location': 'Brasil',
+        'project3_title': 'Mi-Portafolio',
+        'project3_desc': 'El código fuente de este sitio web de portafolio. Construido con HTML, CSS y JavaScript para crear una experiencia de usuario limpia y responsiva.',
+        'project3_link': 'Ver en GitHub',
+        'contact_title': 'Contacto',
+        'contact_name': 'Nombre',
+        'contact_email': 'Correo Electrónico',
+        'contact_message': 'Mensaje',
+        'contact_submit': 'Enviar Mensaje',
+        'contact_success': '¡Gracias por tu mensaje! Ha sido enviado con éxito.',
+        'footer_location': 'Brasil', // Mantido no final
         'github_link': 'GitHub'
     }
 };
@@ -127,6 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const themeToggle = document.getElementById('theme-toggle');
     const langSelect = document.getElementById('lang-select');
     const backToTopButton = document.getElementById('back-to-top-btn');
+    const contactForm = document.getElementById('contact-form');
 
     // --- Configuração do Tema (Claro/Escuro) ---
     // Função para aplicar o tema ao body
@@ -193,6 +212,46 @@ document.addEventListener('DOMContentLoaded', () => {
             behavior: 'smooth' // Efeito de rolagem suave
         });
     });
+
+    // --- Lógica do Formulário de Contato ---
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault(); // Previne o recarregamento da página
+
+            const form = e.target;
+            const submitButton = form.querySelector('button[type="submit"]');
+            const formData = new FormData(form);
+            
+            // Desabilita o botão para evitar envios múltiplos
+            submitButton.disabled = true;
+
+            fetch(form.action, {
+                method: form.method,
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    // Cria e exibe a mensagem de sucesso
+                    const successMessage = document.createElement('p');
+                    successMessage.className = 'form-status-message';
+                    const currentLang = localStorage.getItem('language') || 'pt-br';
+                    successMessage.textContent = translations[currentLang]['contact_success'];
+                    form.parentNode.insertBefore(successMessage, form.nextSibling);
+                    form.reset(); // Limpa o formulário
+                    form.style.display = 'none'; // Opcional: esconde o formulário
+                } else {
+                    // Lida com erros (pode ser expandido)
+                    alert('Ocorreu um erro ao enviar o formulário. Tente novamente.');
+                    submitButton.disabled = false; // Reabilita o botão em caso de erro
+                }
+            }).catch(error => {
+                alert('Ocorreu um erro de rede. Verifique sua conexão e tente novamente.');
+                submitButton.disabled = false; // Reabilita o botão em caso de erro
+            });
+        });
+    }
 
     // --- Configuração da Animação de Rolagem (Intersection Observer) ---
     // Cria um observador que dispara quando um elemento entra na tela
