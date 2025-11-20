@@ -1,0 +1,538 @@
+/* Exemplo de como ajustar o header para mobile */
+header .container { /* Supondo que seus itens do header estão num container */
+  display: flex;
+  flex-wrap: wrap; /* Permite que os itens quebrem para a linha de baixo */
+  justify-content: space-between; /* Espaça os itens */
+  align-items: center;
+}
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500&display=swap'); /* Importa a fonte Roboto Mono */
+
+* {
+    box-sizing: border-box; /* Garante que padding e border não aumentem o tamanho total do elemento */
+}
+
+/* Variáveis de cor para o tema escuro (padrão) */
+:root {
+    --bg-color: #0D1117;       /* Preto GitHub */
+    --primary-color: #39D353;  /* Verde GitHub */
+    --secondary-color: #E6EDF3;/* Branco texto */
+    --tertiary-color: #8B949E; /* Cinza texto secundário */
+    --border-color: #30363D;   /* Cor da borda */
+    --hover-bg-color: #161B22; /* Cor de fundo sutil no hover */
+}
+
+/* Variáveis de cor para o tema claro */
+body.light-theme {
+    --bg-color: #FFFFFF;
+    --primary-color: #2c974b;  /* Verde um pouco mais escuro para contraste */
+    --secondary-color: #24292E;/* Texto principal escuro */
+    --tertiary-color: #586069; /* Texto secundário cinza escuro */
+    --border-color: #D1D5DA;   /* Borda cinza claro */
+    --hover-bg-color: #F6F8FA; /* Fundo de hover muito claro */
+}
+
+/* Estilos globais do corpo da página */
+body {
+    margin: 0; /* Remove a margem padrão do body */
+    background: var(--bg-color); /* Define a cor de fundo usando uma variável */
+    color: var(--secondary-color); /* Define a cor do texto padrão usando uma variável */
+    font-family: "Roboto Mono", monospace; /* Define a família da fonte */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transição suave para mudança de tema */
+}
+
+/* Estilos do Cabeçalho */
+header {
+    padding: 2rem 1rem; /* Espaçamento interno (2rem em cima/baixo, 1rem nos lados) */
+    display: flex; /* Habilita o layout flexbox */
+    align-items: center; /* Alinha os itens verticalmente ao centro */
+    justify-content: space-around; /* Distribui os itens com espaço ao redor */
+    position: sticky; /* Mantém o cabeçalho fixo no topo ao rolar a página */
+    top: 0; /* Posição do topo quando sticky */
+    background: var(--bg-color); /* Cor de fundo do cabeçalho */
+    z-index: 10; /* Define a ordem de empilhamento para ficar sobre outros elementos */
+    border-bottom: 1px solid var(--border-color); /* Adiciona uma borda inferior */
+    gap: 1rem; /* Espaçamento entre os elementos flex */
+    transition: top 0.3s ease-in-out; /* Animação para mostrar/ocultar */
+}
+
+/* Classe para ocultar o cabeçalho durante a rolagem para baixo */
+header.header-hidden {
+    top: -200px; /* Move o cabeçalho para fora da tela (valor alto para cobrir todas as alturas) */
+}
+
+/* Título principal no cabeçalho */
+header h1 {
+    font-size: 1.5rem; /* Tamanho da fonte */
+    margin: 0; /* Remove a margem padrão */
+    font-weight: 500; /* Peso da fonte (médio) */
+    white-space: nowrap; /* Impede a quebra de linha do texto */
+}
+
+header h1 a {
+    color: inherit; /* Herda a cor do elemento pai (h1) */
+    text-decoration: none; /* Remove o sublinhado do link */
+}
+
+/* Subtítulo no cabeçalho (usado para o efeito de digitação) */
+header p {
+    font-size: 1.1rem; /* Tamanho da fonte */
+    color: var(--tertiary-color);   /* Cor do texto (um cinza mais suave) */
+    font-weight: 300;  /* Peso da fonte (mais leve) */
+    margin: 0;   /* Remove margens para melhor alinhamento no cabeçalho flex */
+    text-align: center; /* Centraliza o texto, o que funciona bem em telas menores */
+}
+
+/* Estilos para inputs (atualmente não utilizados, mas mantidos) */
+div input {
+    padding: 0.375rem 0.75rem; /* Espaçamento interno */
+    border-radius: 1rem; /* Arredonda as bordas */
+    border: 1px solid var(--border-color); /* Define a borda */
+    background: var(--bg-color); /* Cor de fundo */
+    font-family: inherit; /* Herda a família da fonte do elemento pai */
+    font-size: 1.2rem; /* Tamanho da fonte */
+    transition: all 0.2s ease; /* Adiciona uma transição suave para todas as propriedades */
+    width: 30rem; /* Largura do input */
+    color: var(--secondary-color); /* Cor do texto digitado */
+    margin-right: .5rem; /* Margem à direita */
+}
+
+div input::placeholder {
+    font-size: 1rem; /* Tamanho da fonte do placeholder */
+    font-weight: 400; /* Peso da fonte do placeholder */
+    color: var(--tertiary-color); /* Cor do texto do placeholder */
+}
+
+div input:focus {
+    outline: none; /* Remove a borda de foco padrão */
+    border-color: var(--primary-color); /* Muda a cor da borda ao focar */
+    box-shadow: 0 0 0 0.1rem var(--primary-color); /* Adiciona uma sombra de caixa para indicar foco */
+}
+
+/* Estilos para botões (atualmente não utilizados, mas mantidos) */
+#botao-busca {
+    padding: 1rem 2rem; /* Espaçamento interno */
+    border-radius: 1rem; /* Arredonda as bordas */
+    border: none; /* Remove a borda padrão */
+    cursor: pointer; /* Muda o cursor para uma mão ao passar por cima */
+    font-family: inherit; /* Herda a família da fonte */
+    font-weight: 500; /* Peso da fonte */
+    font-size: 1rem; /* Tamanho da fonte */
+    white-space: nowrap; /* Impede a quebra de linha do texto */
+    transition: background-color 0.2s ease, color 0.2s ease; /* Transição suave para cor de fundo e cor do texto */
+    background-color: var(--primary-color); /* Cor de fundo */
+    color: var(--bg-color); /* Cor do texto */
+    border: 1px solid var(--primary-color); /* Adiciona uma borda */
+}
+
+#botao-busca:hover {
+    background-color: #30a14e; /* Escurece um pouco o verde no hover */
+    box-shadow: 0 0 0 0.1rem var(--primary-color); /* Adiciona uma sombra de caixa */
+}
+
+#botao-busca:active {
+    transform: scale(0.98); /* Efeito de clique (diminui o tamanho) */
+}
+
+/* Animação para revelar elementos durante a rolagem */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* Classe adicionada via JS quando o elemento se torna visível */
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Seção "Sobre Mim" */
+#about-me {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    padding: 4rem 2rem;
+    max-width: 80rem;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Foto de perfil */
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid var(--primary-color);
+    object-fit: cover;
+}
+
+/* Container do texto da biografia */
+.bio-text {
+    max-width: 600px;
+}
+
+.bio-text h2 {
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.bio-text p {
+    color: var(--secondary-color);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Seção de Habilidades */
+#skills {
+    padding: 4rem 2rem;
+    max-width: 80rem;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--border-color);
+}
+
+#skills h2 {
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-top: 0;
+    margin-bottom: 3rem;
+}
+
+/* Grid para organizar as habilidades */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem 4rem;
+}
+
+.skill-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.skill-item span {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    color: var(--secondary-color);
+}
+
+/* Barra de progresso (container) */
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background-color: var(--border-color);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+/* Preenchimento da barra de progresso (animado via JS) */
+.progress-bar-fill {
+    width: 0; /* Initial width */
+    height: 100%;
+    background-color: var(--primary-color);
+    border-radius: 5px;
+    transition: width 1.5s cubic-bezier(0.25, 1, 0.5, 1); /* Smooth animation */
+}
+
+/* Conteúdo principal da página (seção de projetos) */
+main {
+    max-width: 80rem; /* Largura máxima do conteúdo principal */
+    margin: 0 auto; /* Centraliza o conteúdo principal horizontalmente */
+    margin-top: 2rem; /* Margem no topo */
+    padding: 0 1rem; /* Adiciona espaçamento lateral */
+    min-height: calc(100vh - 10rem - 4rem); /* Garante uma altura mínima para o rodapé ficar em baixo */
+}
+
+/* Estilo para cada artigo de projeto */
+article {
+    background: none; /* Sem cor de fundo */
+    border-radius: 0; /* Sem bordas arredondadas */
+    padding: 0; /* Remove o padding */
+    padding: 0 1rem; /* Espaçamento interno nos lados */
+    margin-bottom: 1.25rem; /* Margem inferior */
+    box-shadow: none; /* Sem sombra */
+    transition: background-color 0.3s ease; /* Transição suave */
+    border-bottom: 1px solid var(--border-color); /* Borda inferior */
+    padding-bottom: 1.5rem; /* Espaçamento interno inferior */
+}
+
+/* Efeito de hover nos artigos */
+article:hover {
+    background-color: var(--hover-bg-color); /* Cor de fundo sutil no hover */
+    cursor: pointer; /* Muda o cursor para uma mão */
+}
+
+article h2 {
+    margin-top: 0; /* Remove a margem superior */
+    font-weight: 600; /* Peso da fonte */
+    font-size: 1.6rem; /* Tamanho da fonte */
+    border-bottom: none;
+    padding-bottom: 0; /* Sem espaçamento interno inferior */
+    margin-bottom: 0.25rem; /* Margem inferior */
+    color: var(--primary-color); /* Cor do texto */
+}
+
+article p {
+    margin: 0.5rem 0; /* Margem superior e inferior */
+    line-height: 1.6; /* Altura da linha para melhor legibilidade */
+    font-size: 1rem; /* Tamanho da fonte */
+    margin-bottom: 0.5rem; /* Margem inferior */
+    color: var(--secondary-color); /* Cor do texto */
+}
+
+article p strong {
+    color: var(--secondary-color); /* Cor do texto em negrito */
+    font-weight: 500; /* Peso da fonte */
+}
+
+article a {
+    color: var(--primary-color); /* Cor do link */
+    text-decoration: none; /* Remove o sublinhado padrão */
+    font-weight: 500; /* Peso da fonte */
+}
+
+article a:hover {
+    text-decoration: underline; /* Adiciona sublinhado ao passar o mouse */
+}
+
+/* Estilos do Rodapé */
+.footer {
+    width: 100%; /* Largura total */
+    color: var(--tertiary-color); /* Cor do texto */
+    background-color: var(--bg-color); /* Cor de fundo */
+    padding: 1rem 2rem; /* Espaçamento interno */
+    border-top: 1px solid var(--border-color); /* Borda superior */
+    font-size: 0.8rem; /* Tamanho da fonte */
+}
+
+/* Container interno do rodapé para alinhamento */
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 80rem; /* Combina com a largura do conteúdo principal */
+    margin: 0 auto;
+}
+
+/* Container para os controles do site no rodapé */
+.footer-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Informações do lado esquerdo do rodapé */
+.footer-info {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.footer-location {
+    color: var(--tertiary-color); /* Cor do texto */
+}
+
+/* Lista de links no rodapé (ex: GitHub) */
+.footer-links {
+    list-style: none; /* Remove os marcadores da lista */
+    padding: 0;
+    margin: 0;
+    display: flex; /* Habilita o layout flexbox */
+    flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha */
+    gap: 15px; /* Espaçamento entre os links */
+}
+
+.footer-links a {
+    color: var(--secondary-color); /* Cor do link */
+    text-decoration: none; /* Remove o sublinhado */
+    transition: color 0.2s; /* Transição suave para a cor */
+}
+
+.footer-links a:hover {
+    color: var(--primary-color); /* Muda a cor do link ao passar o mouse */
+}
+
+/* Estilos do seletor de idiomas */
+.lang-switcher select {
+    /* Resetting default browser styles */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    /* Custom arrow using an embedded SVG */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%238B949E'%3E%3Cpath d='M8 11L3 6h10L8 11z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 0.65em;
+
+    /* General styling */
+    background-color: var(--bg-color);
+    color: var(--secondary-color);
+    border: 1px solid var(--border-color);
+    padding: 0.5rem 2.5rem 0.5rem 1rem; /* Top, Right, Bottom, Left */
+    border-radius: 6px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.lang-switcher select:hover {
+    border-color: var(--tertiary-color);
+}
+
+.lang-switcher select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.1rem var(--primary-color);
+}
+
+/* Botão de alternância de tema */
+#theme-toggle {
+    background: none;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 0.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+#theme-toggle:hover {
+    border-color: var(--tertiary-color);
+}
+
+#theme-toggle svg {
+    width: 18px;
+    height: 18px;
+    color: var(--secondary-color);
+    transition: color 0.2s ease;
+}
+
+/* Lógica para mostrar o ícone correto (sol/lua) com base no tema */
+.light-theme #theme-icon-dark,
+body:not(.light-theme) #theme-icon-light {
+    display: none;
+}
+
+/* Botão "Voltar ao Topo" */
+#back-to-top-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(100px);
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.4s ease;
+    z-index: 1000;
+}
+
+/* Classe para tornar o botão "Voltar ao Topo" visível */
+#back-to-top-btn.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+#back-to-top-btn svg {
+    color: var(--bg-color);
+}
+
+/* Media Queries para Responsividade */
+@media (max-width: 768px) {
+    header { /* Estilos para telas com largura máxima de 768px */
+        flex-direction: column; /* Organiza os itens do cabeçalho em coluna */
+        padding: 1rem; /* Reduz o espaçamento interno */
+    }
+
+    #about-me {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+        padding: 2rem 1rem;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    header h1 { /* Estilos para o h1 no cabeçalho em telas menores */
+        text-align: center; /* Centraliza o texto */
+        margin-bottom: 1rem; /* Adiciona margem inferior */
+    }
+
+    div input { /* Estilos para o input em telas menores */
+        width: 90vw; /* Largura baseada na largura da viewport */
+        font-size: 1.2rem; /* Reduz o tamanho da fonte */
+    }
+
+    main { /* Estilos para o main em telas menores */
+        padding: 0 1rem; /* Adiciona espaçamento lateral */
+    }
+
+    article:hover { /* Estilos para o article em telas menores */
+        background-color: transparent; /* Remove o efeito de hover */
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 { /* Estilos para o h1 em telas com largura máxima de 480px */
+        font-size: 1rem; /* Reduz ainda mais o tamanho da fonte */
+        max-width: 70%; /* Define uma largura máxima */
+        word-wrap: break-word; /* Permite a quebra de palavras longas */
+    }
+
+    div input, /* Estilos para o input e seu placeholder em telas muito pequenas */
+    div input::placeholder {
+        font-size: 0.5rem; /* Reduz o tamanho da fonte */
+    }
+
+    article h2 { /* Estilos para o h2 do article em telas muito pequenas */
+        font-size: 1.3rem; /* Reduz o tamanho da fonte */
+    }
+
+    div { /* Estilos para a div do cabeçalho em telas muito pequenas */
+        display: flex; /* Habilita flexbox */
+        align-items: center; /* Alinha itens ao centro */
+        justify-content: center; /* Centraliza itens */
+        flex-direction: column; /* Organiza em coluna */
+        gap: 0.5rem; /* Espaçamento entre os itens */
+    }
+
+    .footer { /* Estilos para o rodapé em telas muito pequenas */
+        display: none; /* Oculta o rodapé */
+    }
+
+    button { /* Estilos para o botão em telas muito pequenas */
+        margin-top: 1rem; /* Adiciona margem no topo */
+    }
+}
+
+/* Animação do cursor piscando para o efeito de digitação */
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+/* Estilo do cursor que aparece durante a digitação */
+header p.typing::after {
+    content: '|';
+    animation: blink 1s step-end infinite;
+    margin-left: 0.2rem; /* Pequeno espaço para o cursor */
+}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Erick Alves | Portfólio</title>
+</head>
+<body>
+    <!-- Cabeçalho Fixo e Interativo -->
+    <header>
+        <h1><a href="index.html">Erick Alves</a></h1>
+        <!-- Subtítulo com efeito de digitação -->
+        <p data-translate="header_subtitle">Saiba um pouco sobre mim e veja alguns projetos</p>
+    </header>
+
+    <!-- Seção "Sobre Mim" com animação de surgimento -->
+    <section id="about-me" class="reveal">
+        <img src="https://github.com/erickalvespx.png" alt="Foto de Erick Alves" class="profile-pic">
+        <div class="bio-text">
+            <!-- Título e biografia traduzíveis -->
+            <h2 data-translate="about_me_title">Sobre Mim</h2>
+            <p data-translate="about_me_bio">
+                Desenvolvedor de software apaixonado por criar soluções inovadoras e eficientes. Com experiência em desenvolvimento web full-stack, estou sempre em busca de novos desafios e aprendizados para aprimorar minhas habilidades.
+            </p>
+        </div>
+    </section>
+
+    <!-- Seção de Habilidades com barras de progresso animadas -->
+    <section id="skills" class="reveal">
+        <h2 data-translate="skills_title">Habilidades</h2>
+        <div class="skills-grid">
+            <!-- Cada item de habilidade tem uma barra de progresso que é animada ao se tornar visível -->
+            <div class="skill-item"><span data-translate="skill_js">JavaScript</span><div class="progress-bar"><div class="progress-bar-fill" data-progress="90%"></div></div></div>
+            <div class="skill-item"><span data-translate="skill_html">HTML5</span><div class="progress-bar"><div class="progress-bar-fill" data-progress="95%"></div></div></div>
+            <div class="skill-item"><span data-translate="skill_css">CSS3</span><div class="progress-bar"><div class="progress-bar-fill" data-progress="90%"></div></div></div>
+            <div class="skill-item"><span data-translate="skill_react">React</span><div class="progress-bar"><div class="progress-bar-fill" data-progress="85%"></div></div></div>
+            <div class="skill-item"><span data-translate="skill_node">Node.js</span><div class="progress-bar"><div class="progress-bar-fill" data-progress="80%"></div></div></div>
+            <div class="skill-item"><span data-translate="skill_sql">SQL</span><div class="progress-bar"><div class="progress-bar-fill" data-progress="65%"></div></div></div>
+        </div>
+    </section>
+
+    <!-- Conteúdo Principal: Seção de Projetos -->
+    <main >
+        <section id="resultados">
+            <!-- Artigo do Projeto 1 -->
+            <article class="reveal">
+                <h2 data-translate="project1_title">projeto-Sistema-de-tarefas</h2>
+                <p data-translate="project1_desc">Um sistema de chamados para atribuição de tarefas a usuários, com autenticação via JWT. Desenvolvido com Node.js, Express e Prisma.</p>
+                <p><a href="https://github.com/erickalvespx/Sistema-de-tarefas" target="_blank" rel="noopener noreferrer" data-translate="project1_link">Ver no GitHub</a></p>
+            </article>
+            <!-- Artigo do Projeto 2 -->
+            <article class="reveal">
+                <h2 data-translate="project2_title">website-react-portfolio</h2>
+                <p data-translate="project2_desc">Meu portfólio pessoal desenvolvido com React, utilizando componentes estilizados e animações para uma experiência de usuário fluida.</p>
+                <p><a href="#" target="_blank" rel="noopener noreferrer" data-translate="project2_link">Ver projeto</a></p>
+            </article>
+        </section>
+    </main>
+
+    <!-- Rodapé com informações e controles -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-info">
+                <div class="footer-location" data-translate="footer_location">Brasil</div>
+                <ul class="footer-links">
+                    <li><a href="https://github.com/erickalvespx" target="_blank" rel="noopener noreferrer" data-translate="github_link">GitHub</a></li>
+                </ul>
+            </div>
+            <!-- Controles do site: Seletor de tema e idioma -->
+            <div class="footer-controls">
+                <!-- Botão para alternar entre tema claro e escuro -->
+                <button id="theme-toggle" aria-label="Alternar tema">
+                    <svg id="theme-icon-light" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    <svg id="theme-icon-dark" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                </button>
+                <!-- Seletor de Idiomas -->
+                <div class="lang-switcher">
+                    <select id="lang-select" aria-label="Selecionar idioma">
+                        <option value="pt-br">Português</option>
+                        <option value="en">English</option>
+                        <option value="es">Español</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botão "Voltar ao Topo" que aparece durante a rolagem -->
+    <button id="back-to-top-btn" title="Voltar ao topo" aria-label="Voltar ao topo">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+    </button>
+
+    <!-- Inclusão do arquivo JavaScript principal -->
+    <script src="script.js"></script>
+</body>
+</html>
