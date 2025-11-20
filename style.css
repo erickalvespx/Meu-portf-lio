@@ -514,8 +514,13 @@ body:not(.light-theme) #theme-icon-light {
         gap: 0.5rem; /* Espaçamento entre os itens */
     }
 
-    .footer { /* Estilos para o rodapé em telas muito pequenas */
-        display: none; /* Oculta o rodapé */
+    .footer-container {
+        flex-direction: column; /* Organiza os itens em coluna */
+        gap: 1rem; /* Adiciona um espaço entre os blocos */
+    }
+
+    .footer-controls {
+        order: -1; /* Move os controles (tema/idioma) para cima */
     }
 
     button { /* Estilos para o botão em telas muito pequenas */
