@@ -298,6 +298,102 @@ article a:hover {
     text-decoration: underline; /* Adiciona sublinhado ao passar o mouse */
 }
 
+/* Seção de Contato */
+#contact {
+    padding: 4rem 2rem;
+    max-width: 80rem;
+    margin: 0 auto;
+    border-top: 1px solid var(--border-color);
+}
+
+#contact h2 {
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-top: 0;
+    margin-bottom: 3rem;
+}
+
+/* Formulário de Contato */
+#contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--tertiary-color);
+}
+
+.form-group input,
+.form-group textarea {
+    background-color: var(--bg-color);
+    color: var(--secondary-color);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 0.75rem;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.1rem var(--primary-color);
+}
+
+.form-group textarea {
+    resize: vertical; /* Permite que o usuário redimensione a altura */
+}
+
+#contact-form button {
+    align-self: flex-start; /* Alinha o botão à esquerda */
+    /* Reutilizando e adaptando o estilo do botão principal */
+    padding: 0.8rem 1.6rem;
+    border-radius: 6px; /* Borda mais sutil que o botão de busca */
+    border: 1px solid var(--primary-color);
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 1rem;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+    background-color: var(--primary-color);
+    color: var(--bg-color, #0D1117); /* Garante cor de texto escura */
+}
+
+#contact-form button:hover {
+    background-color: #30a14e; /* Tom de verde mais escuro no hover */
+    border-color: #30a14e;
+}
+
+#contact-form button:disabled {
+    background-color: var(--tertiary-color);
+    border-color: var(--tertiary-color);
+    cursor: not-allowed;
+}
+
+/* Estilo para a mensagem de sucesso/erro do formulário */
+.form-status-message {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 6px;
+    background-color: var(--hover-bg-color);
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
 /* Estilos do Rodapé */
 .footer {
     width: 100%; /* Largura total */
@@ -463,6 +559,10 @@ body:not(.light-theme) #theme-icon-light {
         flex-direction: column;
         text-align: center;
         gap: 2rem;
+        padding: 2rem 1rem;
+    }
+
+    #contact {
         padding: 2rem 1rem;
     }
 
