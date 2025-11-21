@@ -1,8 +1,8 @@
 // Objeto contendo todas as traduções para os idiomas suportados
 const translations = {
     'pt-br': {
-        'header_subtitle': 'Saiba um pouco sobre mim e veja alguns projetos',
-        'about_me_title': 'Sobre Mim',
+        'header_subtitle': 'Perfil profissional e portfólio de projetos',
+        'about_me_title': 'Conheça um pouco mais',
         'about_me_bio': 'Desenvolvedor de software apaixonado por criar soluções inovadoras e eficientes. Com experiência em desenvolvimento web front-end, estou sempre em busca de novos desafios e aprendizados para aprimorar minhas habilidades.',
         'skills_title': 'Habilidades',
         'skill_js': 'JavaScript',
@@ -27,8 +27,8 @@ const translations = {
         'github_link': 'GitHub'
     },
     'en': {
-        'header_subtitle': 'Learn a little about me and see some projects',
-        'about_me_title': 'About Me',
+        'header_subtitle': 'Professional profile and project portfolio',
+        'about_me_title': 'Learn a little more',
         'about_me_bio': 'Software developer passionate about creating innovative and efficient solutions. With experience in front-end web development, I am always looking for new challenges and learning opportunities to improve my skills.',
         'skills_title': 'Skills',
         'skill_js': 'JavaScript',
@@ -54,8 +54,8 @@ const translations = {
     }
     ,
     'es': {
-        'header_subtitle': 'Aprende un poco sobre mí y ve algunos proyectos',
-        'about_me_title': 'Sobre Mí',
+        'header_subtitle': 'Perfil profesional y portafolio de proyectos',
+        'about_me_title': 'Conoce un poco más',
         'about_me_bio': 'Desarrollador de software apasionado por crear soluciones innovadoras y eficientes. Con experiencia en desarrollo web front-end, siempre estoy en busca de nuevos desafíos y aprendizajes para mejorar mis habilidades.',
         'skills_title': 'Habilidades',
         'skill_js': 'JavaScript',
@@ -310,3 +310,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     // --- End Hide Header on Scroll ---
 });
+
