@@ -1,7 +1,7 @@
 // Objeto contendo todas as traduções para os idiomas suportados
 const translations = {
     'pt-br': {
-        'header_subtitle': 'Perfil profissional e portfólio de projetos',
+        'header_subtitle': 'Perfil profissional, portfólio de projetos e entrega de resultados',
         'about_me_title': 'Conheça um pouco mais',
         'about_me_bio': 'Desenvolvedor de software apaixonado por criar soluções inovadoras e eficientes. Com experiência em desenvolvimento web front-end, estou sempre em busca de novos desafios e aprendizados para aprimorar minhas habilidades.',
         'skills_title': 'Habilidades',
@@ -27,7 +27,7 @@ const translations = {
         'github_link': 'GitHub'
     },
     'en': {
-        'header_subtitle': 'Professional profile and project portfolio',
+        'header_subtitle': 'Professional profile, project portfolio and delivery of results',
         'about_me_title': 'Learn a little more',
         'about_me_bio': 'Software developer passionate about creating innovative and efficient solutions. With experience in front-end web development, I am always looking for new challenges and learning opportunities to improve my skills.',
         'skills_title': 'Skills',
@@ -54,7 +54,7 @@ const translations = {
     }
     ,
     'es': {
-        'header_subtitle': 'Perfil profesional y portafolio de proyectos',
+        'header_subtitle': 'Perfil profesional, portafolio de proyectos y entrega de resultados',
         'about_me_title': 'Conoce un poco más',
         'about_me_bio': 'Desarrollador de software apasionado por crear soluciones innovadoras y eficientes. Con experiencia en desarrollo web front-end, siempre estoy en busca de nuevos desafíos y aprendizajes para mejorar mis habilidades.',
         'skills_title': 'Habilidades',
@@ -310,4 +310,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     // --- End Hide Header on Scroll ---
 });
+
 
