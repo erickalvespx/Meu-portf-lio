@@ -11,9 +11,13 @@ const translations = {
         'skill_react': 'React',
         'skill_node': 'Node.js',
         'skill_sql': 'SQL',
+        'skill_git': 'Git',
         'project1_title': 'projeto-Sistema-de-tarefas',
         'project1_desc': 'Um sistema de chamados para atribuição de tarefas a usuários, com autenticação via JWT. Desenvolvido com Node.js, Express e Prisma.',
         'project1_link': 'Ver no GitHub',
+        'project2_title': 'CineStream',
+        'project2_desc': 'Uma plataforma de streaming de filmes e séries, permitindo aos usuários pesquisar, assistir a trailers e organizar seus favoritos. Desenvolvido com React, consumindo a API do The Movie Database (TMDb).',
+        'project2_link': 'Ver no GitHub',
         'project3_title': 'Meu-portf-lio',
         'project3_desc': 'O código-fonte deste portfólio. Construído com HTML, CSS e JavaScript para criar uma experiência de usuário limpa e responsiva.',
         'project3_link': 'Ver no GitHub',
@@ -23,7 +27,10 @@ const translations = {
         'contact_message': 'Mensagem',
         'contact_submit': 'Enviar Mensagem',
         'contact_success': 'Obrigado pelo contato! Sua mensagem foi enviada com sucesso.',
-        'footer_location': 'Brasil', // Mantido no final
+        'project4_title': 'projetoConversa--o',
+        'project4_desc': 'Um aplicativo de conversão de moedas que permite aos usuários verificar as taxas de câmbio mais recentes e converter valores entre diferentes moedas. Construído com HTML, CSS e JavaScript, utilizando uma API de taxas de câmbio.',
+        'project4_link': 'Ver no GitHub',
+        'footer_location': 'Brasil',
         'github_link': 'GitHub'
     },
     'en': {
@@ -37,9 +44,13 @@ const translations = {
         'skill_react': 'React',
         'skill_node': 'Node.js',
         'skill_sql': 'SQL',
+        'skill_git': 'Git',
         'project1_title': 'project-Task-System',
         'project1_desc': 'A ticketing system for assigning tasks to users, with JWT authentication. Developed with Node.js, Express, and Prisma.',
         'project1_link': 'View on GitHub',
+        'project2_title': 'CineStream',
+        'project2_desc': 'A movie and series streaming platform, allowing users to search, watch trailers, and organize their favorites. Developed with React, consuming The Movie Database (TMDb) API.',
+        'project2_link': 'View on GitHub',
         'project3_title': 'My-Portfolio',
         'project3_desc': 'The source code for this portfolio website. Built with HTML, CSS, and JavaScript to create a clean and responsive user experience.',
         'project3_link': 'View on GitHub',
@@ -49,7 +60,10 @@ const translations = {
         'contact_message': 'Message',
         'contact_submit': 'Send Message',
         'contact_success': 'Thank you for your message! It has been sent successfully.',
-        'footer_location': 'Brazil', // Mantido no final
+        'project4_title': 'projectConversion',
+        'project4_desc': 'A currency conversion application that allows users to check the latest exchange rates and convert values between different currencies. Built with HTML, CSS, and JavaScript, using an exchange rate API.',
+        'project4_link': 'View on GitHub',
+        'footer_location': 'Brazil',
         'github_link': 'GitHub'
     }
     ,
@@ -64,9 +78,13 @@ const translations = {
         'skill_react': 'React',
         'skill_node': 'Node.js',
         'skill_sql': 'SQL',
+        'skill_git': 'Git',
         'project1_title': 'proyecto-Sistema-de-tareas',
         'project1_desc': 'Un sistema de tickets para asignar tareas a usuarios, con autenticación vía JWT. Desarrollado con Node.js, Express y Prisma.',
         'project1_link': 'Ver en GitHub',
+        'project2_title': 'CineStream',
+        'project2_desc': 'Una plataforma de streaming de películas y series que permite a los usuarios buscar, ver tráileres y organizar sus favoritos. Desarrollado con React, consumiendo la API de The Movie Database (TMDb).',
+        'project2_link': 'Ver en GitHub',
         'project3_title': 'Mi-Portafolio',
         'project3_desc': 'El código fuente de este sitio web de portafolio. Construido con HTML, CSS y JavaScript para crear una experiencia de usuario limpia y responsiva.',
         'project3_link': 'Ver en GitHub',
@@ -76,7 +94,10 @@ const translations = {
         'contact_message': 'Mensaje',
         'contact_submit': 'Enviar Mensaje',
         'contact_success': '¡Gracias por tu mensaje! Ha sido enviado con éxito.',
-        'footer_location': 'Brasil', // Mantido no final
+        'project4_title': 'proyectoConversion',
+        'project4_desc': 'Una aplicación de conversión de moneda que permite a los usuarios consultar los últimos tipos de cambio y convertir valores entre diferentes monedas. Creado con HTML, CSS y JavaScript, utilizando una API de tipos de cambio.',
+        'project4_link': 'Ver en GitHub',
+        'footer_location': 'Brasil',
         'github_link': 'GitHub'
     }
 };
@@ -310,5 +331,3 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     // --- End Hide Header on Scroll ---
 });
-
-
