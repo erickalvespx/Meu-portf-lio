@@ -19,6 +19,7 @@ header .container { /* Supondo que seus itens do header estão num container */
     --tertiary-color: #8B949E; /* Cinza texto secundário */
     --border-color: #30363D;   /* Cor da borda */
     --hover-bg-color: #161B22; /* Cor de fundo sutil no hover */
+    --primary-color-darker: #2da047; /* Verde GitHub mais escuro */
 }
 
 /* Variáveis de cor para o tema claro */
@@ -29,6 +30,7 @@ body.light-theme {
     --tertiary-color: #586069; /* Texto secundário cinza escuro */
     --border-color: #D1D5DA;   /* Borda cinza claro */
     --hover-bg-color: #F6F8FA; /* Fundo de hover muito claro */
+    --primary-color-darker: #227d3d; /* Verde mais escuro para contraste */
 }
 
 /* Estilos globais do corpo da página */
@@ -108,31 +110,6 @@ div input:focus {
     box-shadow: 0 0 0 0.1rem var(--primary-color); /* Adiciona uma sombra de caixa para indicar foco */
 }
 
-/* Estilos para botões (atualmente não utilizados, mas mantidos) */
-#botao-busca {
-    padding: 1rem 2rem; /* Espaçamento interno */
-    border-radius: 1rem; /* Arredonda as bordas */
-    border: none; /* Remove a borda padrão */
-    cursor: pointer; /* Muda o cursor para uma mão ao passar por cima */
-    font-family: inherit; /* Herda a família da fonte */
-    font-weight: 500; /* Peso da fonte */
-    font-size: 1rem; /* Tamanho da fonte */
-    white-space: nowrap; /* Impede a quebra de linha do texto */
-    transition: background-color 0.2s ease, color 0.2s ease; /* Transição suave para cor de fundo e cor do texto */
-    background-color: var(--primary-color); /* Cor de fundo */
-    color: var(--bg-color); /* Cor do texto */
-    border: 1px solid var(--primary-color); /* Adiciona uma borda */
-}
-
-#botao-busca:hover {
-    background-color: #30a14e; /* Escurece um pouco o verde no hover */
-    box-shadow: 0 0 0 0.1rem var(--primary-color); /* Adiciona uma sombra de caixa */
-}
-
-#botao-busca:active {
-    transform: scale(0.98); /* Efeito de clique (diminui o tamanho) */
-}
-
 /* Animação para revelar elementos durante a rolagem */
 .reveal {
     opacity: 0;
@@ -164,6 +141,7 @@ div input:focus {
     height: 150px;
     border-radius: 50%;
     border: 3px solid var(--primary-color);
+    box-shadow: 0 0 20px -5px var(--primary-color);
     object-fit: cover;
 }
 
@@ -232,9 +210,10 @@ div input:focus {
 .progress-bar-fill {
     width: 0; /* Initial width */
     height: 100%;
-    background-color: var(--primary-color);
+    background: linear-gradient(90deg, var(--primary-color), var(--primary-color-darker));
     border-radius: 5px;
     transition: width 1.5s cubic-bezier(0.25, 1, 0.5, 1); /* Smooth animation */
+    box-shadow: 0 0 10px -2px var(--primary-color);
 }
 
 /* Conteúdo principal da página (seção de projetos) */
@@ -248,20 +227,18 @@ main {
 
 /* Estilo para cada artigo de projeto */
 article {
-    background: none; /* Sem cor de fundo */
-    border-radius: 0; /* Sem bordas arredondadas */
-    padding: 0; /* Remove o padding */
-    padding: 0 1rem; /* Espaçamento interno nos lados */
-    margin-bottom: 1.25rem; /* Margem inferior */
-    box-shadow: none; /* Sem sombra */
-    transition: background-color 0.3s ease; /* Transição suave */
-    border-bottom: 1px solid var(--border-color); /* Borda inferior */
-    padding-bottom: 1.5rem; /* Espaçamento interno inferior */
+    background: var(--hover-bg-color);
+    border-radius: 8px;
+    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* Efeito de hover nos artigos */
 article:hover {
-    background-color: var(--hover-bg-color); /* Cor de fundo sutil no hover */
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.2);
     cursor: pointer; /* Muda o cursor para uma mão */
 }
 
@@ -269,9 +246,6 @@ article h2 {
     margin-top: 0; /* Remove a margem superior */
     font-weight: 600; /* Peso da fonte */
     font-size: 1.6rem; /* Tamanho da fonte */
-    border-bottom: none;
-    padding-bottom: 0; /* Sem espaçamento interno inferior */
-    margin-bottom: 0.25rem; /* Margem inferior */
     color: var(--primary-color); /* Cor do texto */
 }
 
@@ -362,20 +336,21 @@ article a:hover {
     /* Reutilizando e adaptando o estilo do botão principal */
     padding: 0.8rem 1.6rem;
     border-radius: 6px; /* Borda mais sutil que o botão de busca */
-    border: 1px solid var(--primary-color);
+    border: none;
     cursor: pointer;
     font-family: inherit;
     font-weight: 500;
     font-size: 1rem;
     white-space: nowrap;
     transition: all 0.2s ease;
-    background-color: var(--primary-color);
-    color: var(--bg-color, #0D1117); /* Garante cor de texto escura */
+    background: linear-gradient(90deg, var(--primary-color), var(--primary-color-darker));
+    color: #fff; /* Texto branco para melhor contraste com o gradiente */
+    box-shadow: 0 4px 15px -5px var(--primary-color);
 }
 
 #contact-form button:hover {
-    background-color: #30a14e; /* Tom de verde mais escuro no hover */
-    border-color: #30a14e;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px -5px var(--primary-color);
 }
 
 #contact-form button:disabled {
@@ -621,6 +596,88 @@ body:not(.light-theme) #theme-icon-light {
     }
 }
 
+/* ================================================== */
+/* ================ ESTILOS DO MINI-JOGO ================ */
+/* ================================================== */
+
+#mini-game {
+    text-align: center;
+    padding: 4rem 2rem;
+    background-color: var(--hover-bg-color); /* Cor de fundo alternativo */
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+#mini-game h2 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+#mini-game p {
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.game-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+#guess-input {
+    width: 200px;
+    padding: 0.8rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--bg-color);
+    color: var(--secondary-color);
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.game-container button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    background: linear-gradient(90deg, var(--primary-color), var(--primary-color-darker));
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px -5px var(--primary-color);
+}
+
+.game-container button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px -5px var(--primary-color);
+}
+
+/* Botão para reiniciar o jogo */
+#restart-game-btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    background: linear-gradient(90deg, var(--primary-color), var(--primary-color-darker));
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px -5px var(--primary-color);
+    margin-top: 1rem; /* Espaço acima do botão */
+}
+
+#restart-game-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px -5px var(--primary-color);
+}
+
 /* Animação do cursor piscando para o efeito de digitação */
 @keyframes blink {
     50% {
@@ -633,4 +690,52 @@ header p.typing::after {
     content: '|';
     animation: blink 1s step-end infinite;
     margin-left: 0.2rem; /* Pequeno espaço para o cursor */
+}
+
+/* --- Estilos do Easter Egg (Konami Code) --- */
+
+/* Animação de "pirueta" (barrel roll) */
+@keyframes barrel-roll {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Animação de pulso de arco-íris para a cor primária */
+@keyframes rainbow-pulse {
+    0%, 100% { --primary-color: #ff2a2a; }
+    16%      { --primary-color: #ff8e2a; }
+    32%      { --primary-color: #fff52a; }
+    48%      { --primary-color: #39D353; }
+    64%      { --primary-color: #2a8fff; }
+    80%      { --primary-color: #a92aff; }
+}
+
+/* Classe aplicada ao body quando o Konami Code é ativado */
+.konami-mode {
+    animation: barrel-roll 2s ease-in-out, rainbow-pulse 4s linear infinite;
+}
+
+.game-feedback {
+    margin-top: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    min-height: 2rem; /* Evita que o layout "pule" quando a mensagem aparece */
+    transition: color 0.3s ease;
+}
+
+.game-feedback.win {
+    color: var(--primary-color);
+}
+
+.game-feedback.lost {
+    color: #ff5252; /* Vermelho para derrota */
+}
+
+/* Classe utilitária para esconder elementos */
+.hidden {
+    display: none;
 }

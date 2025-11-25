@@ -64,12 +64,36 @@
             </article>
             <!-- Artigo do Projeto 4 -->
             <article class="reveal">
-                <h2 data-translate="project4_title">projetoConversa--o</h2>
-                <p data-translate="project4_desc">Um aplicativo de conversão de moedas que permite aos usuários verificar as taxas de câmbio mais recentes e converter valores entre diferentes moedas. Construído com HTML, CSS e JavaScript, utilizando uma API de taxas de câmbio.</p>
+                <h2 data-translate="project4_title">Projeto Conversação</h2>
+                <p data-translate="project4_desc">Um projeto voltado para a comunicação, que traduz textos de português para inglês e vice-versa, facilitando a conversação entre falantes dos dois idiomas.</p>
                 <p><a href="https://github.com/erickalvespx/projetoConversa--o" target="_blank" rel="noopener noreferrer" data-translate="project4_link">Ver no GitHub</a></p>
             </article>
         </section>
     </main>
+
+    <!-- ================================================== -->
+    <!-- ================ SEÇÃO DO MINI-JOGO ================ -->
+    <!-- ================================================== -->
+    <section id="mini-game" class="container reveal">
+        <h2 data-translate="game_title">Mini-Jogo: Adivinhe o Número!</h2>
+        <p data-translate="game_instructions">Eu pensei em um número entre 1 e 100. Você tem 7 tentativas para adivinhar.</p>
+        
+        <form id="game-form" class="game-container">
+            <input 
+                type="number" 
+                id="guess-input" 
+                data-translate-placeholder="game_placeholder"
+                placeholder="Digite seu palpite" 
+                min="1" 
+                max="100"
+                required
+            >
+            <button type="submit" data-translate="game_button">Adivinhar</button>
+        </form>
+    
+        <button type="button" id="restart-game-btn" class="hidden" data-translate="game_restart_button">Jogar Novamente</button>
+        <p id="game-message" class="game-feedback"></p>
+    </section>
 
     <!-- Seção de Contato com formulário -->
     <section id="contact" class="reveal">

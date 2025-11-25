@@ -27,11 +27,20 @@ const translations = {
         'contact_message': 'Mensagem',
         'contact_submit': 'Enviar Mensagem',
         'contact_success': 'Obrigado pelo contato! Sua mensagem foi enviada com sucesso.',
-        'project4_title': 'projetoConversa--o',
-        'project4_desc': 'Um aplicativo de conversão de moedas que permite aos usuários verificar as taxas de câmbio mais recentes e converter valores entre diferentes moedas. Construído com HTML, CSS e JavaScript, utilizando uma API de taxas de câmbio.',
+        'project4_title': 'Projeto Conversação',
+        'project4_desc': 'Um projeto voltado para a comunicação, que traduz textos de português para inglês e vice-versa, facilitando a conversação entre falantes dos dois idiomas.',
         'project4_link': 'Ver no GitHub',
         'footer_location': 'Brasil',
-        'github_link': 'GitHub'
+        'github_link': 'GitHub',
+        'game_title': 'Mini-Jogo: Adivinhe o Número!',
+        'game_instructions': 'Eu pensei em um número entre 1 e 100. Você tem 7 tentativas para adivinhar.',
+        'game_placeholder': 'Digite seu palpite',
+        'game_button': 'Adivinhar',
+        'game_feedback_low': 'Muito baixo! Tente um número maior.',
+        'game_feedback_high': 'Muito alto! Tente um número menor.',
+        'game_feedback_win': 'Parabéns! Você acertou o número!',
+        'game_feedback_lost': 'Fim de jogo! O número era ',
+        'game_restart_button': 'Jogar Novamente'
     },
     'en': {
         'header_subtitle': 'Professional profile, project portfolio and delivery of results',
@@ -60,11 +69,20 @@ const translations = {
         'contact_message': 'Message',
         'contact_submit': 'Send Message',
         'contact_success': 'Thank you for your message! It has been sent successfully.',
-        'project4_title': 'projectConversion',
-        'project4_desc': 'A currency conversion application that allows users to check the latest exchange rates and convert values between different currencies. Built with HTML, CSS, and JavaScript, using an exchange rate API.',
+        'project4_title': 'Conversation Project',
+        'project4_desc': 'A project focused on communication, which translates texts from Portuguese to English and vice-versa, facilitating conversation between speakers of both languages.',
         'project4_link': 'View on GitHub',
         'footer_location': 'Brazil',
-        'github_link': 'GitHub'
+        'github_link': 'GitHub',
+        'game_title': 'Mini-Game: Guess the Number!',
+        'game_instructions': 'I thought of a number between 1 and 100. You have 7 attempts to guess.',
+        'game_placeholder': 'Enter your guess',
+        'game_button': 'Guess',
+        'game_feedback_low': 'Too low! Try a higher number.',
+        'game_feedback_high': 'Too high! Try a smaller number.',
+        'game_feedback_win': 'Congratulations! You guessed the number!',
+        'game_feedback_lost': 'Game over! The number was ',
+        'game_restart_button': 'Play Again'
     }
     ,
     'es': {
@@ -94,11 +112,20 @@ const translations = {
         'contact_message': 'Mensaje',
         'contact_submit': 'Enviar Mensaje',
         'contact_success': '¡Gracias por tu mensaje! Ha sido enviado con éxito.',
-        'project4_title': 'proyectoConversion',
-        'project4_desc': 'Una aplicación de conversión de moneda que permite a los usuarios consultar los últimos tipos de cambio y convertir valores entre diferentes monedas. Creado con HTML, CSS y JavaScript, utilizando una API de tipos de cambio.',
+        'project4_title': 'Proyecto Conversación',
+        'project4_desc': 'Un proyecto enfocado en la comunicación, que traduce textos de portugués a inglés y viceversa, facilitando la conversación entre hablantes de ambos idiomas.',
         'project4_link': 'Ver en GitHub',
         'footer_location': 'Brasil',
-        'github_link': 'GitHub'
+        'github_link': 'GitHub',
+        'game_title': 'Mini-Juego: ¡Adivina el Número!',
+        'game_instructions': 'He pensado en un número entre 1 y 100. Tienes 7 intentos para adivinar.',
+        'game_placeholder': 'Escribe tu número',
+        'game_button': 'Adivinar',
+        'game_feedback_low': '¡Muy bajo! Intenta un número más grande.',
+        'game_feedback_high': '¡Muy alto! Intenta un número más pequeño.',
+        'game_feedback_win': '¡Felicidades! ¡Adivinaste el número!',
+        'game_feedback_lost': '¡Juego terminado! El número era ',
+        'game_restart_button': 'Jugar de Nuevo'
     }
 };
 
@@ -141,6 +168,12 @@ const setLanguage = (language) => {
             } else {
                 element.innerHTML = text;
             }
+
+            // Adicionado: Traduz o atributo 'placeholder' se existir
+            const placeholderKey = element.dataset.translatePlaceholder;
+            if (placeholderKey && translations[language] && translations[language][placeholderKey]) {
+                element.placeholder = translations[language][placeholderKey];
+            }
         }
     });
     // Define o atributo 'lang' do HTML para acessibilidade e SEO
@@ -167,6 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const langSelect = document.getElementById('lang-select');
     const backToTopButton = document.getElementById('back-to-top-btn');
     const contactForm = document.getElementById('contact-form');
+    const gameSection = document.getElementById('mini-game'); // Pega a seção do jogo
 
     // --- Configuração do Tema (Claro/Escuro) ---
     // Função para aplicar o tema ao body
@@ -274,6 +308,78 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- Lógica do Mini-Jogo "Adivinhe o Número" ---
+    if (gameSection) {
+        const gameForm = document.getElementById('game-form');
+        const gameInput = document.getElementById('guess-input');
+        const gameMessage = document.getElementById('game-message');
+        const guessButton = gameForm.querySelector('button');
+        const restartButton = document.getElementById('restart-game-btn');
+
+        let targetNumber;
+        let attempts;
+        const maxAttempts = 7;
+
+        const startGame = () => {
+            targetNumber = Math.floor(Math.random() * 100) + 1;
+            attempts = maxAttempts;
+            gameMessage.className = 'game-feedback'; // Reseta as classes de cor
+            gameMessage.textContent = '';
+            gameInput.value = '';
+            gameInput.disabled = false;
+            guessButton.disabled = false;
+            gameForm.classList.remove('hidden'); // Mostra o formulário
+            restartButton.classList.add('hidden'); // Esconde o botão de reiniciar
+            console.log(`Novo jogo iniciado. O número é ${targetNumber}`); // Dica para depuração
+        };
+
+        gameForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const guess = parseInt(gameInput.value, 10);
+            const currentLang = localStorage.getItem('language') || 'pt-br';
+
+            if (isNaN(guess) || guess < 1 || guess > 100) {
+                // Se precisar de uma mensagem de erro para entrada inválida, adicione-a às traduções.
+                gameMessage.textContent = "Por favor, insira um número válido entre 1 e 100.";
+                return;
+            }
+
+            attempts--;
+
+            if (guess === targetNumber) {
+                gameMessage.classList.remove('lost');
+                gameMessage.classList.add('win');
+                gameMessage.textContent = translations[currentLang]['game_feedback_win'];
+                gameInput.disabled = true;
+                guessButton.disabled = true;
+                gameForm.classList.add('hidden'); // Esconde o formulário
+                restartButton.classList.remove('hidden'); // Mostra o botão de reiniciar
+            } else if (attempts > 0) {
+                gameMessage.classList.remove('win', 'lost');
+                const feedbackKey = guess < targetNumber ? 'game_feedback_low' : 'game_feedback_high';
+                gameMessage.textContent = translations[currentLang][feedbackKey] + ` (${attempts} tentativas restantes)`;
+                gameMessage.style.color = 'var(--tertiary-color)'; // Cor neutra para dicas
+            } else {
+                gameMessage.classList.remove('win');
+                gameMessage.classList.add('lost');
+                gameMessage.textContent = translations[currentLang]['game_feedback_lost'] + targetNumber + '.';
+                gameInput.disabled = true;
+                guessButton.disabled = true;
+                gameForm.classList.add('hidden'); // Esconde o formulário
+                restartButton.classList.remove('hidden'); // Mostra o botão de reiniciar
+            }
+            gameInput.value = '';
+            gameInput.focus();
+        });
+
+        // Adiciona o listener para o botão de reiniciar
+        restartButton.addEventListener('click', startGame);
+
+        // Inicia o jogo quando a página carrega
+        startGame();
+    }
+    // --- Fim da Lógica do Mini-Jogo ---
+
     // --- Configuração da Animação de Rolagem (Intersection Observer) ---
     // Cria um observador que dispara quando um elemento entra na tela
     revealObserver = new IntersectionObserver((entries, observer) => {
@@ -330,4 +436,39 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     // --- End Hide Header on Scroll ---
+});
+// --- Lógica do Easter Egg (Konami Code) ---
+
+// A sequência de teclas secreta
+const konamiCode = [
+    'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown',
+    'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight',
+    'b', 'a'
+];
+
+let konamiIndex = 0; // Rastreia a posição do usuário na sequência
+
+// Função que é chamada quando o código é inserido corretamente
+const activateBarrelRoll = () => {
+    document.body.classList.add('konami-mode'); // Adiciona a classe que ativa a animação
+
+    // Remove a classe após a animação terminar (4 segundos) para retornar ao normal
+    setTimeout(() => {
+        document.body.classList.remove('konami-mode');
+    }, 4000);
+};
+
+// Ouve os eventos de teclado em toda a página
+document.addEventListener('keydown', (e) => {
+    // Se a tecla pressionada for a correta na sequência
+    if (e.key === konamiCode[konamiIndex]) {
+        konamiIndex++; // Avança na sequência
+        // Se a sequência inteira foi digitada
+        if (konamiIndex === konamiCode.length) {
+            activateBarrelRoll(); // Ativa o efeito!
+            konamiIndex = 0; // Reseta para que possa ser feito novamente
+        }
+    } else {
+        konamiIndex = 0; // Se a tecla errada for pressionada, reseta a contagem
+    }
 });
